@@ -15,16 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
         window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
-        
         window?.backgroundColor = UIColor.whiteColor()
-        
         window?.rootViewController = RootViewController()
-        
         window?.makeKeyAndVisible()
         
+        setupAppearance()
+        
         return true
+    }
+    
+    /// 设置外观
+    func setupAppearance(){
+        
+        // 设置NavigationBar (顶部按钮)的外观
+        UINavigationBar.appearance().tintColor = UIColor.orangeColor()
+        // 设置TabBar (底部按钮)的外观
+        UITabBar.appearance().tintColor = UIColor.orangeColor()
     }
 }
 

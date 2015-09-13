@@ -8,30 +8,39 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController {
-
+class BaseTableViewController: UITableViewController , VisitorViewDelegate{
+    
     /// 记录用户是否登录属性
     var userLogin = false
     
     /// 定义view
-    var visitor : visitorView?
+    var visitor : VisitorView?
     
     /// 改写loadView 使其判定用户是否登录
     override func loadView() {
         
         userLogin ? super.loadView() : setupVisitorView()
+        
     }
 
     /// 设置访客视图
     private func setupVisitorView(){
         
-        visitor = visitorView()
+        visitor = VisitorView()
+        visitor?.delegate = self
         view = visitor
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: "clickRegisterButton", action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.Plain, target: "clickLoginButton", action: nil)
+        // 设置BarButtonItem的文字和点击
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.Plain, target: self, action: "visitorViewWillLogin")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "visitorViewWillRegister")
     }
     
+    // MARK: - 代理方法
+    func visitorViewWillLogin() {
+        print("点击了登录按钮")
+    }
     
-    
+    func visitorViewWillRegister() {
+        print("点击了注册按钮")
+    }
 }

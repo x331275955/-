@@ -8,10 +8,29 @@
 
 import UIKit
 
-class visitorView: UIView {
+/// 设置代理
+protocol VisitorViewDelegate: NSObjectProtocol {
+    /// 将要登录
+    func visitorViewWillLogin()
+    /// 将要注册
+    func visitorViewWillRegister()
+}
 
+class VisitorView: UIView {
+
+    /// 定义代理
+    weak var delegate: VisitorViewDelegate?
+    
+    // 注册按钮的点击事件
+    func clickRegisterButton(){
+        delegate?.visitorViewWillRegister()
+    }
+    
+    //  登录按钮的点击事件
+    func clickLoginButton(){
+        delegate?.visitorViewWillLogin()
+    }
     /// 设置视图信息
-    ///
     /// - parameter isHome   : 是否是主页
     /// - parameter imageName: 中央显示的图片
     /// - parameter message  : 要显示的信息
@@ -24,6 +43,7 @@ class visitorView: UIView {
         isHome ? startAnimation() : sendSubviewToBack(backImageView)
     }
     
+    /// 设置首页动画
     private func startAnimation(){
         
         let anim = CABasicAnimation(keyPath: "transform.rotation")
@@ -100,16 +120,6 @@ class visitorView: UIView {
         addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: textLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 16))
         addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100))
         addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 35))
-    }
-    
-    // 注册按钮的点击事件
-    func clickRegisterButton(){
-        print("点击了注册按钮")
-    }
-    
-    //  登录按钮的点击事件
-    func clickLoginButton(){
-        print("点击了登录按钮")
     }
     
     // MARK: -     懒加载各种控件

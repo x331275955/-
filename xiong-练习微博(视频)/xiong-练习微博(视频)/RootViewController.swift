@@ -47,8 +47,6 @@ class RootViewController: UITabBarController {
         
         let nv = UINavigationController(rootViewController: vc)
         
-        tabBar.tintColor = UIColor.orangeColor()
-        
         addChildViewController(nv)
     }
 
