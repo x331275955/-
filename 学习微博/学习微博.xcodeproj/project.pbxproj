@@ -114,12 +114,12 @@
 		C875CF8D1B9FDE38004D3D05 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C875CF8E1B9FDE38004D3D05 /* Discover */,
-				C875CF901B9FDE38004D3D05 /* Home */,
 				C875CF921B9FDE38004D3D05 /* Main */,
+				C875CF901B9FDE38004D3D05 /* Home */,
 				C875CF971B9FDE38004D3D05 /* Message */,
-				C875CF991B9FDE38004D3D05 /* OAuth */,
+				C875CF8E1B9FDE38004D3D05 /* Discover */,
 				C875CF9B1B9FDE38004D3D05 /* Profile */,
+				C875CF991B9FDE38004D3D05 /* OAuth */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -143,9 +143,9 @@
 		C875CF921B9FDE38004D3D05 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C875CF931B9FDE38004D3D05 /* BaseTableViewController.swift */,
 				C875CF941B9FDE38004D3D05 /* Demo.storyboard */,
 				C875CF951B9FDE38004D3D05 /* MainViewController.swift */,
+				C875CF931B9FDE38004D3D05 /* BaseTableViewController.swift */,
 				C875CF961B9FDE38004D3D05 /* VisitorLoginView.swift */,
 			);
 			path = Main;

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  学习微博
+//  xiong-练习微博(视频)
 //
-//  Created by 王晨阳 on 15/9/9.
+//  Created by 王晨阳 on 15/9/12.
 //  Copyright © 2015年 IOS. All rights reserved.
 //
 
@@ -15,25 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         
-        setupAppearance()
-        
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = RootViewController()
         
         window?.makeKeyAndVisible()
         
         return true
     }
-
-    func setupAppearance() {
-        
-        UINavigationBar.appearance().tintColor = UIColor.orangeColor()
-        UITabBar.appearance().tintColor = UIColor.orangeColor() 
-        
-    }
-    
 }
 
