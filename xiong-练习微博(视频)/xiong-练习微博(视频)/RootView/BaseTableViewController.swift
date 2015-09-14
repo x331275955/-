@@ -11,7 +11,7 @@ import UIKit
 class BaseTableViewController: UITableViewController , VisitorViewDelegate{
     
     /// 记录用户是否登录属性
-    var userLogin = false
+    var userLogin = UserAccount.loadAccount() != nil 
     
     /// 定义view
     var visitor : VisitorView?
@@ -37,7 +37,10 @@ class BaseTableViewController: UITableViewController , VisitorViewDelegate{
     
     // MARK: - 代理方法
     func visitorViewWillLogin() {
-        print("点击了登录按钮")
+        
+        let nav = UINavigationController(rootViewController: OAuthViewController())
+        
+        presentViewController(nav, animated: true, completion: nil)
     }
     
     func visitorViewWillRegister() {
