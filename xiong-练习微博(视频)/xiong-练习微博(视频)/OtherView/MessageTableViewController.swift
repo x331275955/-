@@ -14,6 +14,5 @@ class MessageTableViewController: BaseTableViewController {
         super.viewDidLoad()
         
         visitor?.setupViewInfo(false, imageName: "visitordiscover_image_message", message: "登录后别人评论你的微博,发给你的信息,都会在这里收到通知")
-        
     }
 }

@@ -14,12 +14,12 @@ private let XErrorDomainName = "com.xiong.error.network"
 
 class NetworkTools: AFHTTPSessionManager{
     
-    // 回调地址
-    let redirectUri = "http://www.baidu.com"
     // 应用程序信息
     private let clientId = "3959022179"
     private let appSecret = "e2f4c5a876cc8b8139ae93832e43ab0f"
-
+    // 回调地址
+    let redirectUri = "http://www.baidu.com"
+    
     // 单例
     static let sharedTools : NetworkTools = {
         let baseURL = NSURL(string: "https://api.weibo.com/")!
@@ -30,7 +30,8 @@ class NetworkTools: AFHTTPSessionManager{
         
         return tools
     }()
-    // 加载用户数据
+    
+    // MARK:- 加载用户数据
     func loadUserInfo(uid:String, finished: XiongNetFinishedCallBack) {
         
         // 判断 token 是否存在
@@ -41,15 +42,20 @@ class NetworkTools: AFHTTPSessionManager{
         let urlString = "2/users/show.json"
         let params: [String:AnyObject]  = ["access_token":UserAccount.loadAccount()!.access_token! , "uid":uid]
         
+// TODO: 正在获取用户信息
+print("4.(NetworkTools)正在获取用户信息" + urlString)
         // 发送网络请求
         requesGET(urlString, params: params,finished:finished)
-}
-    
+    }
     
     // MARK:- OAuth授权
     func oauthUrl() -> NSURL {
         
         let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(clientId)&redirect_uri=\(redirectUri)"
+        
+// TODO: 打印URL
+print("1.(NetworkTools)到授权URL中填写密码:" + urlString)
+        
         return NSURL(string: urlString)!
     }
     
@@ -65,13 +71,11 @@ class NetworkTools: AFHTTPSessionManager{
         
         // 发送POST请求 获取Token
         POST(urlString, parameters: params, success: { (_, JSON) -> Void in
-            
             finished(result: JSON as? [String : AnyObject], error: nil)
-            
             }){(_,error) ->Void in
-               
-                finished(result: nil, error: error)
+                
                 print(error)
+                finished(result: nil, error: error)
         }
     }
     
@@ -88,20 +92,18 @@ class NetworkTools: AFHTTPSessionManager{
         GET(urlString, parameters: params, success: { (_, JSON) -> Void in
             
             if let result = JSON as? [String:AnyObject]{
-                
                 // 有结果的回调
                 finished(result: result, error: nil)
             }else{
-                
                 // 没有错误,同时没有结果
                 let error = NSError(domain: XErrorDomainName, code: -1, userInfo: ["errorMessage":"空数据"])
                 
-                finished(result: nil, error: error)
-                
                 print("没有数据")
+                finished(result: nil, error: error)
             }
             
             }) { (_, error) -> Void in
+                
                 print(error)
                 finished(result: nil, error: error)
         }

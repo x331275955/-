@@ -14,6 +14,5 @@ class HomeTableViewController: BaseTableViewController {
         super.viewDidLoad()
         
         visitor?.setupViewInfo(true, imageName: "visitordiscover_feed_image_smallicon", message: "关注一些人,回这里看看有什么惊喜")
-        
     }
 }

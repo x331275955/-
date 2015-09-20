@@ -12,15 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        print(UserAccount.loadAccount())
+print("0.(AppDelegate)查看用户信息:",UserAccount.loadAccount())
+        
+
         
         window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        window?.rootViewController = RootViewController()
+//        window?.rootViewController = RootViewController()
+        window?.rootViewController = WelcomeViewController()
         window?.makeKeyAndVisible()
         
         setupAppearance()

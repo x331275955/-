@@ -11,7 +11,7 @@ import SVProgressHUD
 
 class OAuthViewController: UIViewController,UIWebViewDelegate {
 
-    // MARK:搭建界面
+    // MARK:- 搭建界面:
     private lazy var webView = UIWebView()
     
     override func loadView() {
@@ -23,7 +23,7 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: "close")
     }
     
-    // 关闭方法
+    // 关闭界面
     func close(){
         SVProgressHUD.dismiss() 
         dismissViewControllerAnimated(true, completion: nil)
@@ -34,10 +34,11 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.whiteColor()
+        // 加载授权界面
         webView.loadRequest(NSURLRequest(URL: NetworkTools.sharedTools.oauthUrl()))
     }
     
-    // MARK:- WebView代理方法
+    // MARK:- WebView代理方法 (一共4个,下面这3个都是)
     func webViewDidStartLoad(webView: UIWebView) {
         SVProgressHUD.show()
     }
@@ -62,41 +63,64 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
             // 截取 code= 后面的字符串
             let str = NSString(string: query)
             let code = str.substringFromIndex("code=".characters.count)
+
+// TODO: 拿到code
+print("2.(OAuthView)拿到code=" + code)
             
-            //TODO: 获取 TOKEN
             loadAccessToken(code)
+            
         }else{
             close()
         }
         return false
     }
     
-    // 调用单例方法
+    // MARK:- 调用单例方法:
     private func loadAccessToken(code:String){
         NetworkTools.sharedTools.loadAccessToken(code) { (result, error) -> () in
+            
+            // 有错误或者数据为空
             if error != nil || result == nil{
-                SVProgressHUD.showInfoWithStatus("您的网络不给力")
-                
-                let when = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
-                dispatch_after(when, dispatch_get_main_queue(), { () -> Void in
-                    self.close()
-                })
-                return
-            }else if result != nil {
-                SVProgressHUD.showInfoWithStatus("登录成功")
-                
-                let when = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
-                dispatch_after(when, dispatch_get_main_queue(), { () -> Void in
-                    self.close()
-                })
-                
-                // 字典转模型
-                let account = UserAccount(dict: result!)
-                account.saveAccount()
-                NetworkTools.sharedTools.loadUserInfo(account.uid!, finished: { (result, error) -> () in
-                })
+                // 显示网络不给力
+                self.netError()
                 return
             }
+            
+// TODO: 获取Token
+print("3.(OAuthView)获取Token:",result)
+            
+            // 数据不为空,登录成功
+            // 字典转模型
+            UserAccount(dict: result!).loadUserInfo({(error) -> () in
+                if error != nil{
+                    print("错误!!")
+                    self.netError()
+                    return
+                }
+                self.netSucceed()
+            })
         }
+    }
+    
+    // 打印错误方法
+    private func netError(){
+        SVProgressHUD.showInfoWithStatus("您的网络不给力")
+        
+        // 延时一段时间再关闭
+        let when = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
+        dispatch_after(when, dispatch_get_main_queue()) {
+            self.close()
+        }
+    }
+    
+    // 打印成功方法
+    private func netSucceed(){
+        SVProgressHUD.showInfoWithStatus("登录成功")
+        
+        let when = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC))
+        dispatch_after(when, dispatch_get_main_queue(), { () -> Void in
+            
+            self.close()
+        })
     }
 }
