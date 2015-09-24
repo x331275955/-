@@ -11,7 +11,7 @@ import UIKit
 class BaseTableViewController: UITableViewController , VisitorViewDelegate{
     
     /// 记录用户是否登录属性
-    var userLogin = UserAccount.loadAccount() != nil 
+    var userLogin = UserAccount.userLogon
     
     // 判断是否是新用户
     var newUser :Bool?

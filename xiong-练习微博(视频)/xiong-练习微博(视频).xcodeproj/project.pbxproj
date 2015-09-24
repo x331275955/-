@@ -20,8 +20,8 @@
 		C87DC0EB1BA58C520041E134 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87DC0EA1BA58C520041E134 /* OAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C886C3A71BA3E4DB00DC2289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886C3A61BA3E4DB00DC2289 /* AppDelegate.swift */; };
 		C886C3AE1BA3E4DB00DC2289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C886C3AD1BA3E4DB00DC2289 /* Assets.xcassets */; };
-		C887A8B91BAAD9A6003065FD /* NewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887A8B81BAAD9A6003065FD /* NewCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C89727CD1BA68252004054CA /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89727CC1BA68252004054CA /* UserAccount.swift */; settings = {ASSET_TAGS = (); }; };
+		C8FBBE461BAE74E0002F292E /* NewUserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FBBE451BAE74E0002F292E /* NewUserCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +41,8 @@
 		C886C3A61BA3E4DB00DC2289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C886C3AD1BA3E4DB00DC2289 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C886C3B21BA3E4DB00DC2289 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C887A8B81BAAD9A6003065FD /* NewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewController.swift; sourceTree = "<group>"; };
 		C89727CC1BA68252004054CA /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		C8FBBE451BAE74E0002F292E /* NewUserCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserCollectionViewController.swift; sourceTree = "<group>"; };
 		F3052495CCDBD8EA66AB1825 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				C87DC0E31BA58BEB0041E134 /* VisitorView.swift */,
-				C887A8B81BAAD9A6003065FD /* NewCollectionViewController.swift */,
 				C87DC0E01BA58BEB0041E134 /* HomeTableViewController.swift */,
 				C87DC0E11BA58BEB0041E134 /* MessageTableViewController.swift */,
 				C87DC0DF1BA58BEB0041E134 /* DiscoverTableViewController.swift */,
@@ -150,6 +149,7 @@
 			children = (
 				C89727CC1BA68252004054CA /* UserAccount.swift */,
 				C85375E71BA7AD9F00834849 /* WelcomeViewController.swift */,
+				C8FBBE451BAE74E0002F292E /* NewUserCollectionViewController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,12 +285,12 @@
 			files = (
 				C87DC0E51BA58BEB0041E134 /* HomeTableViewController.swift in Sources */,
 				C87DC0DC1BA58BE60041E134 /* BaseTableViewController.swift in Sources */,
+				C8FBBE461BAE74E0002F292E /* NewUserCollectionViewController.swift in Sources */,
 				C87DC0D81BA58BE00041E134 /* NetworkTools.swift in Sources */,
 				C87DC0DD1BA58BE60041E134 /* RootViewController.swift in Sources */,
 				C89727CD1BA68252004054CA /* UserAccount.swift in Sources */,
 				C87DC0EB1BA58C520041E134 /* OAuthViewController.swift in Sources */,
 				C87DC0E41BA58BEB0041E134 /* DiscoverTableViewController.swift in Sources */,
-				C887A8B91BAAD9A6003065FD /* NewCollectionViewController.swift in Sources */,
 				C886C3A71BA3E4DB00DC2289 /* AppDelegate.swift in Sources */,
 				C87DC0E81BA58BEB0041E134 /* VisitorView.swift in Sources */,
 				C85375E81BA7AD9F00834849 /* WelcomeViewController.swift in Sources */,

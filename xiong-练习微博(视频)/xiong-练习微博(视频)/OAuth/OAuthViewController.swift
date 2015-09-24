@@ -98,6 +98,9 @@ print("3.(OAuthView)获取Token:",result)
                     return
                 }
                 self.netSucceed()
+                
+                // 发送通知
+                NSNotificationCenter.defaultCenter().postNotificationName(XRootViewControllerSwitchNotification, object: false)
             })
         }
     }

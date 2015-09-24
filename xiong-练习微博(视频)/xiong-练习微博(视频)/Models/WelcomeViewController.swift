@@ -41,6 +41,8 @@ class WelcomeViewController: UIViewController {
             
             }){ (_) -> Void in
                 
+                // 发送通知
+                NSNotificationCenter.defaultCenter().postNotificationName(XRootViewControllerSwitchNotification, object: true)
         }
     }
     
