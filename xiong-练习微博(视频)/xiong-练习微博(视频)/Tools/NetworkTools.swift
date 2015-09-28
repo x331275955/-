@@ -108,7 +108,11 @@ class NetworkTools: AFHTTPSessionManager{
         request(XNetworkMethod.POST, urlString: urlString, params: params, finished: finished)
     }
     
-    
+    // MARK:- AFN网络请求    GET / POST
+    /// - parameter method:    HTTP 网络请求 GET / POST
+    /// - parameter urlString: URL字符串
+    /// - parameter params:    字典参数
+    /// - parameter finished:  完成回调
     private func request(method: XNetworkMethod, urlString: String, params: [String: AnyObject], finished: XNetFinishedCallBack){
         // 1. 定义成功闭包
         let successCallBack: (NSURLSessionDataTask!, AnyObject!) -> Void = { (_, JSON) -> Void in

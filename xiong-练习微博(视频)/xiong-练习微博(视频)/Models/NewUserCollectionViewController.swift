@@ -63,7 +63,6 @@ class NewUserCollectionViewController: UICollectionViewController {
             
             cell.startButtonAnim()
         }
-       
     }
 }
 
@@ -152,8 +151,6 @@ class NewUserCell: UICollectionViewCell {
         
         return button
     }()
-    
-    
 }
 
 // 顺序:1.数据源获取cell数量.   2.获取layout     3. 数据源方法   去布局cell
